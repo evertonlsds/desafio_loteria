@@ -1,19 +1,21 @@
 import NumeroDisplay from "../../components/NumeroDisplay";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { mega } from "../../functions/mega";
 
 export default function megasena(){
-    const[ numeros, setNumeros] = useState(mega())
+    const[ numeros, setNumeros] = useState([])
     const[ qtde, setQtde] = useState(6)
+
+
+    useEffect(() => {
+        setNumeros(mega())
+    }, [])
 
     
     
     function renderizarNumeros(){
         return numeros.map(numero => <NumeroDisplay key = {numero} numero = {numero} />)
     }
-    
-    
-    
     
     
     return(
